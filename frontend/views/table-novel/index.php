@@ -21,30 +21,59 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>ID Novel</th>
+                <th>Judul</th>
+                <th>Penulis</th>
+                <th>Sinopsis</th>
+                <th>Genre</th>
+                <th>Tanggal Rilis</th>
+                <th>Sampul</th>
+                <th>Status</th>
+                <th>Dibuat Pada</th>
+                <th>Diperbarui Pada</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
 
-            'id',
-            'id_novel',
-            'judul',
-            'penulis',
-            'sinopsis',
-            //'genre',
-            //'tanggal_rilis',
-            //'sampul',
-            //'status',
-            //'created_at',
-            //'updated_at',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, TableNovel $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+
+            foreach ($dataProvider->models as $index => $model): ?>
+                <tr>
+                    <td><?= $index + 1 ?></td>
+                    <td><?= $model->id ?></td>
+                    <td><?= $model->id_novel ?></td>
+                    <td><?= $model->judul ?></td>
+                    <td><?= $model->penulis ?></td>
+                    <td><?= $model->sinopsis ?></td>
+                    <td><?= $model->genre ?></td>
+                    <td><?= $model->tanggal_rilis ?></td>
+                    <td>
+                        <?= Html::img('@web/' . $model->sampul, ['alt' => 'Sampul', 'style' => 'width:50px;height:auto;']) ?>
+                    </td>
+                    <td><?= $model->status ?></td>
+                    <td><?= $model->created_at ?></td>
+                    <td><?= $model->updated_at ?></td>
+                    <td>
+                        <?= Html::a('View', ['view', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+                        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+                        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => 'Are you sure you want to delete this item?',
+                                'method' => 'post',
+                            ],
+                        ]) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
 
 </div>
