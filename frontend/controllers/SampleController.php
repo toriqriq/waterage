@@ -3,6 +3,7 @@
 // SampleController.php
 namespace frontend\controllers;
 
+use app\models\TableNovel;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
@@ -17,12 +18,8 @@ class SampleController extends Controller
     public function actionGetData1()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-
         // Data untuk tampilan 1
-        $data = [
-            ['id' => 1, 'name' => 'Item 1 from Data 1'],
-            ['id' => 2, 'name' => 'Item 2 from Data 1'],
-        ];
+        $data = TableNovel::find()->select(['id', 'judul'])->asArray()->all();
 
         return $data;
     }
