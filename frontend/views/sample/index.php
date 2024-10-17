@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'AJAX Example with Multiple Views';
+$this->title = 'Selamat datang di situs Linovelia';
 ?>
 
 <div class="sample-index">
@@ -34,7 +34,7 @@ $(document).ready(function() {
             success: function(data1) {
                 $('#data1').empty(); // Clear existing data
                 $.each(data1, function(index, item) {
-                    $('#data1').append('<p>' + item.judul + '</p>'); // Menampilkan judul dari data1
+                    $('#data1').append('<p>' + '<b>'+item.judul+'</b>'+'<br>'+item.sinopsis+'<br>'+'<p>'); // Menampilkan judul dari data1
                 });
             },
             error: function() {
