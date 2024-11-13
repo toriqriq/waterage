@@ -48,7 +48,7 @@ $(document).ready(function() {
             success: function(data2) {
                 $('#data2').empty(); // Clear existing data
                 $.each(data2, function(index, item) {
-                    $('#data2').append('<p>' + item.name + '</p>'); // Menampilkan name dari data2
+                    $('#data2').append('<p>' + item.genre + '</p>'); // Menampilkan genre dari data2
                 });
             },
             error: function() {

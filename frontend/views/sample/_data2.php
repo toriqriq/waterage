@@ -4,6 +4,8 @@
 use yii\helpers\Html;
 
 foreach ($data as $item) {
-    echo '<p>' . Html::encode($item['name']) . '</p>';
+
+    echo '<p>' . Html::encode($item['id']) . '</p>';
 }
+
 ?>

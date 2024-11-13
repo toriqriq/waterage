@@ -29,10 +29,7 @@ class SampleController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         // Data untuk tampilan 2
-        $data = [
-            ['id' => 1, 'name' => 'Item 1 from Data 2'],
-            ['id' => 2, 'name' => 'Item 2 from Data 2'],
-        ];
+        $data = TableNovel::find()->all();
 
         return $data;
     }
